@@ -1,0 +1,27 @@
+type: lamp
+php: 8.1
+database: mariadb:11.4
+
+# The sample database can be obtained at:
+# https://probosupportfiles.blob.core.windows.net/utils/drupal7-example.sql.gz
+assets:
+  - drupal7-example.sql.gz
+
+steps:
+  - name: Install Drupal 7 Based On Composer File
+    plugin: Drupal
+    drupalVersion: 7
+    database: drupal7-example.sql.gz
+    databaseGzipped: true
+    clearCaches: true
+    databaseUpdates: true
+    subDirectory: web
+
+  - name: Fix file permissions
+    command: 'mkdir $SRC_DIR/web/sites/default/files/private && chown -R www-data:www-data $SRC_DIR/web/sites/default/files'
+
+  - name: Cache clear
+    command: "drush --root=/var/www/html cc all"
+
+  - name: Login command
+    command: "drush --root=/var/www/html uli"

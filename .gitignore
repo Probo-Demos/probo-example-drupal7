@@ -1,0 +1,12 @@
+.DS_Store
+
+# Ignore configuration files that may contain sensitive information.
+sites/*/*settings*.php
+!sites/*/default.settings.php
+
+# Ignore paths that contain user-generated content.
+/web/sites/*/files
+/web/sites/*/private
+
+# Ignore multi-site test environment.
+sites/simpletest
