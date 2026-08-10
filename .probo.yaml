@@ -8,7 +8,7 @@ assets:
   - drupal7-example.sql.gz
 
 steps:
-  - name: Install Drupal 7 Based On Composer File
+  - name: Install Drupal 7
     plugin: Drupal
     drupalVersion: 7
     database: drupal7-example.sql.gz
